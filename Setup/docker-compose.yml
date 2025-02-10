@@ -12,9 +12,28 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
       - ./01-init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
       - ./02-create_indexes.sql:/docker-entrypoint-initdb.d/02-create_indexes.sql:ro
+    networks:
+      - backend_network
+
+  redis:
+    image: redis:latest
+    container_name: enpal-coding-challenge-redis
+    restart: always
+    command: ["redis-server", "--requirepass", "mypassword123!"]
+    ports:
+      - "6379:6379"
+    networks:
+      - backend_network
+    volumes:
+      - redis-data:/data
+
+networks:
+  backend_network:
+    driver: bridge
 
 volumes:
   pgdata:
+  redis-data:

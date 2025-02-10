@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using Application;
 using Infrastructure;
+using Infrastructure.Persistence.Redis;
 using WebAPI.Converters;
 
 namespace WebAPI;
@@ -24,7 +25,8 @@ public class Startup(IConfiguration configuration)
 
 		services.AddApplication();
 		services.AddInfrastructure(configuration);
-		
+		services.Configure<RedisConfiguration>(configuration.GetSection(nameof(RedisConfiguration)));
+
 		services.AddTransient<ExceptionHandlingMiddleware>();
 	}
 
