@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: enpal-coding-challenge-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword123!
+      POSTGRES_DB: coding-challenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./01-init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./02-create_indexes.sql:/docker-entrypoint-initdb.d/02-create_indexes.sql:ro
+
+volumes:
+  pgdata:
