@@ -24,7 +24,7 @@ Before starting, make sure you have installed:
 ---
 
 ### 🛠 2. Start the Database
-Navigate to the **Setup** folder and execute the **start-db.ps1** script.  
+Navigate to the **setup** folder and execute the **start-db.ps1** script.  
 Script will execute 
 ```docker-compose up -d ```
 
@@ -45,7 +45,7 @@ The application will automatically connect to the database upon startup.
 Navigate to the **Setup** folder and execute the **start-api.ps1** script.  
 Script will execute
 ```
-cd ../MeetUpScheduler/WebAPI/
+cd ../src/WebAPI/
 dotnet run --launch-profile "WebAPI"
 ```
 

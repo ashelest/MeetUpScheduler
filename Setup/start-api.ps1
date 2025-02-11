@@ -1,2 +1,2 @@
-cd ../MeetUpScheduler/WebAPI/
+cd ../src/WebAPI/
 dotnet run --launch-profile "WebAPI"
